@@ -62,8 +62,8 @@ def data_extractor():
 
 
 
-#code pasting function
-def code_paster(lst):
+#auto code pasting function
+def auto_code_paster(lst):
     """
     Takes in the extracted codes and pastes each code
 
@@ -85,4 +85,4 @@ if __name__ == "__main__":
     #initalizing codes_lst to the list of codes returned by data_extractor()
     codes_lst = data_extractor()
     #run the code_paster function to automate pasting codes
-    code_paster(codes_lst)
+    auto_code_paster(codes_lst)
