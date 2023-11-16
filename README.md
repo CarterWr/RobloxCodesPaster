@@ -42,7 +42,7 @@ Follow this format or it will not work correctly
 ```
 404roblox 1Mfollowers happyholidays xmas santapaws tonsofcoins im2lucky  1mplus300k  happysaturday11  yaydiamonds2  alienpets yaydiamonds 
 ```
-As you can see there is just a space or two that seprate each code, do not each code on a new line keep them on the same line seperated by a space.
+As you can see there is just a space or two that seprate each code, do not put each code on a new line keep them on the same line seperated by a space.
 
 ## Dependencies
 
