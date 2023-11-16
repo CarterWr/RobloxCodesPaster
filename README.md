@@ -42,7 +42,7 @@ pyautogui 0.9.54
 
 ## File Structure
 
-project/
+Roblox Codes Paster/
 │
 
 ├── RobloxCodesPaster.py
