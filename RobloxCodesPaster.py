@@ -123,4 +123,6 @@ if __name__ == "__main__":
     else:
         #if 1 or 2 is not selected run auto as default
         auto_code_paster(codes_lst)
+
+print("All of the codes have been used, Goodbye :)")
     
