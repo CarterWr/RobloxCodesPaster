@@ -61,11 +61,12 @@ Roblox Codes Paster/
 
 ├── README
 
-├── requirements.txt
-
 ├── RobloxCodesList.txt
 
-└── RobloxCodesPaster.py
+├── RobloxCodesPaster.py
+
+└── requirements.txt
+
 
 ## License
 
