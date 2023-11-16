@@ -44,10 +44,15 @@ pyautogui 0.9.54
 
 project/
 │
+
 ├── RobloxCodesPaster.py
+
 ├── RobloxCodesList
+
 ├── LICENSE.md
+
 ├── README.md
+
 └── requirements.txt
 
 ## License
