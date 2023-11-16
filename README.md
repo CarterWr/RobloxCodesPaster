@@ -46,9 +46,11 @@ As you can see there is just a space or two that seprate each code, do not each 
 
 ## Dependencies
 
+```
 Python 3.10.11
-pyautogui 0.9.54
 
+pyautogui 0.9.54
+```
 
 ## File Structure
 
