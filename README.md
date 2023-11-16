@@ -12,6 +12,8 @@ Pastes extracted roblox codes into a codes box in game.
 
 ## Installation
 
+IMPORTANT NOTE: MAKE SURE TO BE IN THE RobloxCodesPaster DIRECTORY BEFORE USING THE COMMAND
+
 To install the Dependencies needed for this file you must use:
 	
 ```bash
