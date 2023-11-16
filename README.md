@@ -16,13 +16,15 @@ To install the Dependencies needed for this file you must use:
 	
 ```bash
 pip install -r requirements.txt
-
+```
 
 ## Usage
 
 To run script:
 
+```bash
 python RobloxCodesPaster.py
+```
 
 How to use:
 
