@@ -2,7 +2,7 @@
  
 Pastes extracted roblox codes into a codes box in game.
 
-##Table of Contents
+## Table of Contents
 
 - [Installation](#installation)
 - [Usage](#usage)
