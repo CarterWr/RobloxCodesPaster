@@ -45,15 +45,15 @@ pyautogui 0.9.54
 Roblox Codes Paster/
 │
 
-├── RobloxCodesPaster.py
+├── LICENSE
 
-├── RobloxCodesList
+├── README
 
-├── LICENSE.md
+├── requirements.txt
 
-├── README.md
+├── RobloxCodesList.txt
 
-└── requirements.txt
+└── RobloxCodesPaster.py
 
 ## License
 
