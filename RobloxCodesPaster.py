@@ -10,7 +10,11 @@ Important Note: Before running this file make sure all dependencies are installe
 for information on how to install dependencies read the README file.
 
 Potential improvements:
-
+This method only currently works with roblox games where you just press enter after inputing
+the code into the text box, so it can be improved by adding another function that makes it click
+the enter box and then deletes. Once adding this there would need to be user input added to the
+code to make it a option to select either pressing enter on the keyboard or clicking a enter box
+in game.
 """
 
 
