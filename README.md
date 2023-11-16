@@ -20,7 +20,14 @@ pip install -r requirements.txt
 
 ## Usage
 
-TBD
+To run script:
+
+python RobloxCodesPaster.py
+
+How to use:
+
+After running the script you have 5 seconds to click into the codes text box,
+after clicked into the wanted text box after 5 seconds the codes will paste into the text box and press enter and delete themselves make sure not to touch your keyboard when this is going on if you want this to be sucsessful.
 
 
 ## Dependencies
