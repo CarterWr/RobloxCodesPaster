@@ -10,11 +10,8 @@ Important Note: Before running this file make sure all dependencies are installe
 for information on how to install dependencies read the README file.
 
 Potential improvements:
-This method only currently works with roblox games where you just press enter after inputing
-the code into the text box, so it can be improved by adding another function that makes it click
-the enter box and then deletes. Once adding this there would need to be user input added to the
-code to make it a option to select either pressing enter on the keyboard or clicking a enter box
-in game.
+Add it where the script grabs website data and looks for codes and pastes those codes to the 
+RobloxCodesList.txt file.
 """
 
 
@@ -22,43 +19,53 @@ in game.
 #Imports 
 import pyautogui
 from time import sleep as sleep
+import requests
+from bs4 import BeautifulSoup
 
-#file extraction function
-def data_extractor():
+
+#Website data getter funciton
+def web_data_puller(url):
     """
-    Extracts roblox codes from the RobloxCodesList.txt File and removes white spaces
-    and puts each code into a list and returns that list.
+    Finds and pulls codes from the link given
+
+    Params: url(str): The url input given by the user
+
+    Returns: Codes_lst(lst): A list of roblox codes provided by the given url
+    """
+    try:
+        #Send a get request to url
+        response = requests.get(url)
+
+        #Parse the HTML content of the page
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        #Finds the list items in the urls html code
+        list_items = soup.find('body').find('ul')
+
+        #creating a empty codes list to later store codes into
+        codes_lst = []
+
+        #Loop through list_items and find the codes and appending codes to codes_lst
+        for item in list_items:
+            strong_tags = item.find_all('strong')
+            if len(strong_tags) > 0:
+                code = strong_tags[0].get_text(strip=True)
+                # Exclude phrases like "(New)"
+                if "(New)" not in item.get_text(strip=True):  
+                    codes_lst.append(code)
+
+        print(codes_lst)
     
-    Params: None
+    except AttributeError as e:
+        #Handles Attribute error
+        print(f"Attribute error occured: {e}")
+        print("Setting codes value to empty")
 
-    Returns: codes_lst(list): List of extracted codes 
-    """
-    #Create empty list to store codes into
-    codes_lst = []
-
-    #Open up the RobloxCodesList.txt file
-    with open('RobloxCodesList.txt', 'r') as file: #DO NOT CHANGE THE FILE NAME
-
-        #Read all lines from file
-        lines = file.readlines()
-        
-        #loops through each line in file
-        for line in lines:
-            #breaks loop if there is empty block spaces
-            if (line.strip() == ""):
-                break
-
-            #cleans up the whitespaces 
-            words = line.strip(' ')
-
-            #sets code_lst to updated words
-            codes_lst = words.split(" ")
-
-            #filters out empty values
-            codes_lst = list(filter(None, codes_lst))
-
-            
+        codes_lst = []
+    
+    #return codes list
     return codes_lst
+
 
 
 
@@ -79,38 +86,56 @@ def code_paster(lst, user_input):
     if user_input != 1 and user_input != 2:
         user_input = 1
 
+    #checking for first iteration to display a print message once
+    first_iteration = True
+
     #Loop through each code in the list
     for index, code in enumerate(lst):
         #if user picks option 1 the auto paste and enter runs
         pyautogui.write(code) 
+
         #This is for the games with no confirm box
         if user_input == 1:
             #presses enter automatically on the keyboard
             pyautogui.press('enter')
         #This is for the games with a confirm box
         elif user_input == 2:
-            #instead of pyautogui hitting the enter key we wait for user input
-            input(f"Press 'Enter' to continue, codes left: {index+1}/{len(lst)}")
+            if first_iteration:
+                input("Press 'ENTER' to continue")
+
             #give the user time again to click back into the text box after claiming
             sleep(3)
+        
+        #keeps track of how many codes are left
+        print(f"codes left: {index+1}/{len(lst)}")
+        
+        #selects code and deletes it
         pyautogui.hotkey('ctrl', 'a')
         pyautogui.press('backspace')
 
 
 #Execution code
 if __name__ == "__main__":
-    #initalizing codes_lst to the list of codes returned by data_extractor()
-    codes_lst = data_extractor()
+    #gets url user wants to get codes from
+    codes_url = str(input("Enter codes website url: ")).strip()
 
-    #display options to user 
-    print("1 - auto paster (no clicking involved)")
-    print("2 - manual paster (you must click the confirm button to contiue the clicks)")
+    #Extracts codes from website and writes data onto RobloxCodesList.txt
+    codes_lst = web_data_puller(codes_url)
 
-    #gather user input after dispaly
-    user_input = int(input())
+    #chceks if the codes_lst is empty if it is ends script
+    if len(codes_lst) == 0:
+        print("There are no working codes!")
+    #if there is codes in the codes list runs like normal
+    else:
+        #display options to user 
+        print("1 - auto paster (no clicking involved)")
+        print("2 - manual paster (you must click the confirm button to contiue the clicks)")
 
-    #run the code_paster function to automate pasting codes
-    code_paster(codes_lst, user_input)
-    
+        #gather user input after dispaly
+        user_input = int(input())
 
-print("All of the codes have been used, Goodbye :)")
+        #run the code_paster function to automate pasting codes
+        code_paster(codes_lst, user_input)
+        
+        #ending statement
+        print("All of the codes have been used, Goodbye :)")
