@@ -113,6 +113,9 @@ def code_paster(lst, user_input):
         pyautogui.hotkey('ctrl', 'a')
         pyautogui.press('backspace')
 
+        #gives the program a sec to delete
+        sleep(1)
+
 
 #Execution code
 if __name__ == "__main__":
