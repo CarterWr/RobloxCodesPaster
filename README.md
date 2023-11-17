@@ -50,6 +50,10 @@ As you can see there is just a space or two that seprate each code, do not put e
 Python 3.10.11
 
 pyautogui 0.9.54
+
+Beautiful Soup 4.12.2
+
+Requests 2.31.0
 ```
 
 ## File Structure
